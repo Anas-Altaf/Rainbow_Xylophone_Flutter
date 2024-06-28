@@ -1,7 +1,7 @@
 # xylophone_flutter
 
 A new Flutter project.
-An Application Written in Flutter to play 7 different Sounds.
+An Android/IOS Application Written in Flutter to play 7 different Sounds.
 ## SS
 ![](https://i.imgur.com/F0PWT1h.png)
 

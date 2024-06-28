@@ -1,4 +1,4 @@
-# xylophone_flutter
+# Rainbow_Xylophone
 
 A new Flutter project.
 An Android/IOS Application Written in Flutter to play 7 different Sounds.

@@ -12,7 +12,7 @@ class SoundBar extends StatelessWidget {
 
   void audioPlayer() async {
     final AudioPlayer player = AudioPlayer();
-    await player.stop();
+    //await player.stop();
     await player.play(AssetSource(audiofilePath));
   }
 

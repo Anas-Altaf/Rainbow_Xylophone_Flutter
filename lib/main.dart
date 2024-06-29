@@ -3,6 +3,15 @@ import 'package:flutter/material.dart';
 
 void main() => runApp(const Xylophone());
 
+//Sound Player
+void audioPlayer({required audiofileNumber}) async {
+  final AudioPlayer player = AudioPlayer();
+  //await player.stop();
+  await player.play(AssetSource('note$audiofileNumber.wav'));
+}
+
+//<================= 1st Way [Efficient] ================>
+// => Use with 'const' Material App
 //SoundBox Widget
 class SoundBar extends StatelessWidget {
   final int audiofileNumber;
@@ -10,19 +19,14 @@ class SoundBar extends StatelessWidget {
 
   const SoundBar({required this.audiofileNumber, required this.barBackColor});
 
-  void audioPlayer() async {
-    final AudioPlayer player = AudioPlayer();
-    //await player.stop();
-    await player.play(AssetSource('note$audiofileNumber.wav'));
-  }
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
       child: InkWell(
-        onTap: audioPlayer,
+        onTap: () {
+          audioPlayer(audiofileNumber: audiofileNumber);
+        },
         child: Container(
-          padding: EdgeInsets.all(16.0),
           decoration: BoxDecoration(
             color: barBackColor,
           ),
@@ -32,6 +36,24 @@ class SoundBar extends StatelessWidget {
   }
 }
 
+//<================= 2nd Way ================>
+// => Use without 'const' in Material App
+//SoundBox Function
+// Expanded SoundBar({required audiofileNumber, required barBackColor}) {
+//   return Expanded(
+//     child: InkWell(
+//       onTap: () {
+//         audioPlayer(audiofileNumber: audiofileNumber);
+//       },
+//       child: Container(
+//         decoration: BoxDecoration(
+//           color: barBackColor,
+//         ),
+//       ),
+//     ),
+//   );
+// }
+
 //Main Xylophone Widget
 class Xylophone extends StatelessWidget {
   const Xylophone({super.key});
@@ -40,6 +62,7 @@ class Xylophone extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
           child: Column(
             children: [
